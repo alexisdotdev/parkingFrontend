@@ -1,0 +1,58 @@
+<div  class="grid grid-cols-1 justify-items-center lg:px-[15%] ">
+  <div class="grid grid-cols-1 w-full mb-5 md:grid-cols-3 gap-7">
+    <div>
+      <label for="direccion" class="mb-2">Dirección</label>
+      <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Derección">
+      <p class="italic text-red-500 hidden">Ingresa una direccion</p>
+    </div>
+    <div>
+      <label for="puntaje">Puntaje</label>
+      <input type="number" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Puntaje">
+      <p class="italic text-red-500 hidden">Ingresa una direccion</p>
+    </div>
+    <div>
+      <label for="puntaje">Precio</label>
+      <input type="number" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Precio">
+      <p class="italic text-red-500 hidden">Ingresa una direccion</p>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 w-full mb-5 md:grid-cols-2 gap-7 ">
+    <div>
+      <label for="tipo">Selecciona tipo de estacionamiento</label>
+      <select name="selectTipe" id="selectTipo" class="p-2 w-full rounded-lg shadow border focus:outline-none focus:shadow-outline md:max-w-100 placeholder:text-gray-600">
+        <option value="null">Selecciona un valor</option>
+        <option value="publico">Publico</option>
+        <option value="privado">Privado</option>
+      </select>
+    </div>
+    <div>
+      <label for="btnImagen">Ingresa comodidades</label>
+      <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Ingresa los datos separados por coma">
+      <p class="italic text-red-500 hidden">Ingresa una direccion</p>
+    </div>
+
+
+  </div>
+  <div class="grid grid-cols-1 gap-7 w-full mb-5 md:grid-cols-2">
+    <div class="w-full">
+      <label for="descripcion">Ingresa una descripcion</label>
+      <textarea name="descripcion" id="descripcion" class="w-full h-auto p-2 shadow appearance-none border rounded focus:outline-none focus:shadow-outline" placeholder="Ingresa una descripción"></textarea>
+    </div>
+    <div class="flex flex-col">
+      <label for="btnImagen">Selecciona una imagen</label>
+      <button id="btnUploadImg" class="w-auto  border rounded p-2 text-gray-700">Selecciona</button>
+    </div>
+  </div>
+  <div class="w-full text-center">
+    <button class="cta" (click)="createNewCard()">
+      <span>Crear Estacionamiento</span>
+      <svg viewBox="0 0 13 10" height="10px" width="15px">
+        <path d="M1,5 L11,5"></path>
+        <polyline points="8 1 12 5 8 9"></polyline>
+      </svg>
+    </button>
+  </div>
+</div>
+
+

@@ -1,0 +1,51 @@
+<div class="max-w-md mb-8 bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl md:min-h-[317px]">
+  <div class="md:flex">
+    <div class="md:shrink-0">
+      <img class="h-48 w-full object-cover md:min-h-[317px] md:w-56" [src]="item.image" alt="">
+    </div>
+    <div class="p-8">
+      <div class="mb-5">
+        <p class="text-3xl text-primary font-bold">{{item.address}}</p>
+        <hr >
+      </div>
+      <div class="w-full flex flex-row flex-wrap mb-5">
+        <div *ngFor="let badge of item.amenities" class="w-auto">
+          <div [ngSwitch]="badge" class="mr-2 mb-2">
+            <div *ngSwitchCase="'camara'" class="flex flex-row flex-wrap gap-2 rounded-md bg-gray-500 p-1">
+              <span class="material-icons text-white">camera</span>
+              <p class="text-white">{{badge}}</p>
+            </div>
+            <div *ngSwitchCase="'cajon techado'" class="flex flex-row flex-wrap gap-2 rounded-md bg-gray-500 p-1">
+              <span class="material-icons text-white">local_parking</span>
+              <p  class=" text-white">{{badge}}</p>
+            </div>
+            <div *ngSwitchCase="'departamento'" class="flex flex-row flex-wrap gap-2 rounded-md bg-gray-500 p-1">
+              <span class="material-icons text-white">apartment</span>
+              <p  class="text-white">{{badge}}</p>
+            </div>
+            <div *ngSwitchCase="'planta baja'" class="flex flex-row flex-wrap gap-2 rounded-md bg-gray-500 p-1">
+              <span class="material-icons text-white"> other_houses</span>
+              <p  class="text-white">{{badge}}</p>
+            </div>
+            <div *ngSwitchDefault class="flex flex-row flex-wrap gap-2 rounded-md bg-gray-500 p-1">
+              <span class="material-icons text-white"> other_houses</span>
+              <p  class="text-white">{{badge}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="w-full md:flex md:gap-8 mb-6">
+        <div class="flex">
+          <span class="material-icons text-yellow-400 text-2xl">star</span>
+          <p class="text-2xl ml-2 font-bold text-primary">{{item.score}}</p>
+        </div>
+        <div>
+          <p class="text-2xl ml-2 font-bold text-primary">{{item.price | currency: 'MXN'}} /Mes</p>
+        </div>
+      </div>
+      <div class="text-center w-full md:w-3/4">
+        <button class="w-full bg-red-600 text-white rounded-lg p-2" (click)="onDeleteCard()">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>

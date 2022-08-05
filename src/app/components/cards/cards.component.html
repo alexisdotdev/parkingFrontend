@@ -1,0 +1,5 @@
+<app-filter></app-filter>
+
+<div class="grid grid-cols-1 justify-items-center lg:grid-cols-2 gap-8">
+  <app-card [item]="item" *ngFor="let item of items" (deleteItem)="deleteCards($event)"></app-card>
+</div>
