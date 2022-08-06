@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/services/products.service';
-import { Card, CardDTO } from "../../models/card.model";
+import { Card, CardDTO, CardModel } from "../../models/card.model";
 
 
 
@@ -17,7 +17,7 @@ export class CardsComponent implements OnInit {
   cardChosen: Card = {
     id: '',
     address : '',
-    amenities: [],
+    amenities: '',
     score: 0,
     price: 0,
     type: '',
@@ -30,8 +30,8 @@ export class CardsComponent implements OnInit {
       this.deleteCards();
     }) */
 
-    productService.$emtterCreate.subscribe(() => {
-      this.createNewProduct();
+    productService.$emtterCreate.subscribe((data: CardDTO) => {
+      this.createNewProduct(data);
     })
    }
 
@@ -42,18 +42,22 @@ export class CardsComponent implements OnInit {
     })
   }
 
-  createNewProduct() {
-    const estacionamiento: CardDTO = {
-      address: "calle avenida 4",
-      amenities: ["cajon techado","departamento", "planta baja"],
-      score: 4,
-      price: 2000,
-      type: "publico",
-      image: "https://placeimg.com/640/480",
-      description: "Estacionamiento en avenida"
+  createNewProduct(data: CardDTO) {
+
+    let amenities = data.amenities;
+    let arrAmenities = amenities.split(',')
+    //"https://placeimg.com/640/480"
+    const parking: CardModel = {
+      address: data.address,
+      amenities: arrAmenities,
+      score: data.score,
+      price: data.price,
+      type: data.type,
+      image: data.image,
+      description: data.description
     }
 
-    this.productService.create(estacionamiento)
+    this.productService.create(parking)
     .subscribe(data => {
       this.items.unshift(data)
     })

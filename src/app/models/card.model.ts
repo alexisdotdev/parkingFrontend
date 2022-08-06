@@ -8,7 +8,7 @@ export interface CreateCard extends Omit<Card, 'id' | 'category'> {
 export interface Card {
   id: string;
   address: string;
-  amenities: Array<string>;
+  amenities: string;
   score: number;
   price: number
   type: string;
@@ -18,4 +18,7 @@ export interface Card {
 
 export interface CardDTO extends Omit<Card, 'id'> {
 
+}
+export interface CardModel extends Omit<Card, 'id'|'amenities'> {
+  amenities: Array<string>;
 }

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
-import { Card, CardDTO } from "./../models/card.model";
+import { Card, CardDTO, CardModel } from "./../models/card.model";
 
 
 @Injectable({
@@ -15,21 +15,16 @@ export class ProductsService {
   }
 
   $emtterCreate = new EventEmitter();
-  $emtterDelete = new EventEmitter();
 
-  deleteEvent() {
-      this.$emtterDelete.emit();
-  }
-
-  createEvent() {
-    this.$emtterCreate.emit();
+  createEvent(data: CardDTO) {
+    this.$emtterCreate.emit(data);
   }
 
   getAllParkings() {
     return this.http.get<Card[]>('http://localhost:3000/api/v1/products')
   }
 
-  create (data: CardDTO ) {
+  create (data: CardModel ) {
     return this.http.post<Card>(this.apiUrl, data);
   }
 

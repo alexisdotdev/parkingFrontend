@@ -1,26 +1,26 @@
-<div  class="grid grid-cols-1 justify-items-center lg:px-[15%] ">
+<form [formGroup]="form" (ngSubmit)="save($event)"  class="grid grid-cols-1 justify-items-center lg:px-[15%] ">
   <div class="grid grid-cols-1 w-full mb-5 md:grid-cols-3 gap-7">
     <div>
       <label for="direccion" class="mb-2">Dirección</label>
-      <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Derección">
-      <p class="italic text-red-500 hidden">Ingresa una direccion</p>
+      <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Dirección" formControlName="address" autocomplete="false" />
+      <p class="italic text-red-500" [class.hidden]="isFieldValid" *ngIf="addressField?.touched && addressField?.hasError('required')" >Ingresa una direccion</p>
     </div>
     <div>
       <label for="puntaje">Puntaje</label>
-      <input type="number" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Puntaje">
-      <p class="italic text-red-500 hidden">Ingresa una direccion</p>
+      <input type="number" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Puntaje" formControlName="score"  />
+      <p class="italic text-red-500 hidden" [class.hidden]="isFieldValid" *ngIf="scoreField?.touched && scoreField?.hasError('required')">Ingresa un puntaje</p>
     </div>
     <div>
       <label for="puntaje">Precio</label>
-      <input type="number" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Precio">
-      <p class="italic text-red-500 hidden">Ingresa una direccion</p>
+      <input type="number" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Precio" formControlName="price" />
+      <p class="italic text-red-500 hidden"[class.hidden]="isFieldValid" *ngIf="priceField?.touched && priceField?.hasError('required')">Ingresa una precio</p>
     </div>
   </div>
 
   <div class="grid grid-cols-1 w-full mb-5 md:grid-cols-2 gap-7 ">
     <div>
       <label for="tipo">Selecciona tipo de estacionamiento</label>
-      <select name="selectTipe" id="selectTipo" class="p-2 w-full rounded-lg shadow border focus:outline-none focus:shadow-outline md:max-w-100 placeholder:text-gray-600">
+      <select name="selectTipe" id="selectTipo" class="p-2 w-full rounded-lg shadow border focus:outline-none focus:shadow-outline md:max-w-100 placeholder:text-gray-600" formControlName="type">
         <option value="null">Selecciona un valor</option>
         <option value="publico">Publico</option>
         <option value="privado">Privado</option>
@@ -28,31 +28,37 @@
     </div>
     <div>
       <label for="btnImagen">Ingresa comodidades</label>
-      <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Ingresa los datos separados por coma">
-      <p class="italic text-red-500 hidden">Ingresa una direccion</p>
+      <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Ingresa los datos separados por coma" formControlName="amenities" />
+      <p class="italic text-red-500 hidden" [class.hidden]="isFieldValid" *ngIf="amenitiesField?.touched && amenitiesField?.hasError('required')">Ingresa comodidades</p>
     </div>
-
-
   </div>
   <div class="grid grid-cols-1 gap-7 w-full mb-5 md:grid-cols-2">
     <div class="w-full">
       <label for="descripcion">Ingresa una descripcion</label>
-      <textarea name="descripcion" id="descripcion" class="w-full h-auto p-2 shadow appearance-none border rounded focus:outline-none focus:shadow-outline" placeholder="Ingresa una descripción"></textarea>
+      <textarea name="descripcion" id="descripcion" class="w-full h-auto p-2 shadow appearance-none border rounded focus:outline-none focus:shadow-outline" placeholder="Ingresa una descripción" formControlName="description" ></textarea>
+      <p class="italic text-red-500 hidden"[class.hidden]="isFieldValid" *ngIf="descriptionField?.touched && descriptionField?.hasError('required')">Ingresa una descripción</p>
     </div>
     <div class="flex flex-col">
       <label for="btnImagen">Selecciona una imagen</label>
-      <button id="btnUploadImg" class="w-auto  border rounded p-2 text-gray-700">Selecciona</button>
+      <input type="file" id="btnUploadImg" class="w-auto  border rounded p-2 text-gray-700" placeholder="Selecciona una foto" formControlName="image"/>
     </div>
   </div>
   <div class="w-full text-center">
-    <button class="cta" (click)="createNewCard()">
+    <button class="cta" type="submit">
       <span>Crear Estacionamiento</span>
       <svg viewBox="0 0 13 10" height="10px" width="15px">
         <path d="M1,5 L11,5"></path>
         <polyline points="8 1 12 5 8 9"></polyline>
       </svg>
     </button>
+    <!-- <button class="cta" (click)="createNewCard()">
+      <span>Crear Estacionamiento</span>
+      <svg viewBox="0 0 13 10" height="10px" width="15px">
+        <path d="M1,5 L11,5"></path>
+        <polyline points="8 1 12 5 8 9"></polyline>
+      </svg>
+    </button> -->
   </div>
-</div>
+</form>
 
 

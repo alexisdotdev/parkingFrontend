@@ -14,7 +14,7 @@ export class CardComponent implements OnInit {
   @Input() item : Card = {
     id: '',
     address : '',
-    amenities: [],
+    amenities: '',
     score: 0,
     price: 0,
     type: '',
